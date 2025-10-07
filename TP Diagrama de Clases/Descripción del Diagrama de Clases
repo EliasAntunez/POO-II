@@ -1,0 +1,7 @@
+El sistema modela una tienda online donde los **usuarios** pueden ser **clientes** o **administradores**.
+Los clientes poseen un **carrito de compras**, en el que agregan productos mediante **detalles de carrito**, y pueden generar **pedidos** que contienen **detalles de pedido** asociados a los productos seleccionados.
+Cada pedido está vinculado a un **pago**, que registra la fecha, el monto y el método de pago utilizado.
+Los productos pertenecen a una **categoría** y son gestionados por los administradores.
+Los clientes también pueden tener registradas varias **direcciones de envío**.
+La **tienda** agrupa los productos disponibles y centraliza la gestión general.
+Se utilizan relaciones de **herencia**, **composición** (para representar la dependencia entre pedidos y sus detalles, y entre carritos y sus detalles) y **agregación** (entre cliente y direcciones de envío).
