@@ -1,5 +1,5 @@
-## POO-II
-# Trabajos prácticos del grupo 08
+# POO-II
+## Trabajos prácticos del grupo 08
 
 Integrantes:
 - Antúnez, Elías
