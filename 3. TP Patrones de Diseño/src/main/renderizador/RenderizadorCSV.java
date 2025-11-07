@@ -18,6 +18,8 @@ public class RenderizadorCSV implements Renderizador {
         System.out.println("================================\n");
     }
     
+    // metodo para obtener la extension del archivo
+    // Override para implementar la interfaz Renderizador
     @Override
     public String obtenerExtension() {
         return ".csv";

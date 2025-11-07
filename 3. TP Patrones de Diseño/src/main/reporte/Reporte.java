@@ -57,6 +57,8 @@ public class Reporte {
         return orientacion;
     }
     
+    // Método toString para mostrar el reporte
+    // Override para personalizar la representación en cadena
     @Override
     public String toString() {
         return "Reporte{" +
@@ -71,6 +73,7 @@ public class Reporte {
     }
     
     // Clase Builder interna estática
+    // estatica para que no dependa de una instancia externa de Reporte
     public static class ReporteBuilder {
         // Obligatorios
         private final String titulo;
