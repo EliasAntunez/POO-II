@@ -1,4 +1,4 @@
-package main.java.reportes.reporte;
+package main.reporte;
 
 // ===============================================
 // MODELO: Enumeración Orientacion

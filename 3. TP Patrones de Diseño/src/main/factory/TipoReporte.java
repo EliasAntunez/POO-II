@@ -1,4 +1,4 @@
-package main.java.reportes.factory;
+package main.factory;
 
 public enum TipoReporte {
     PDF,

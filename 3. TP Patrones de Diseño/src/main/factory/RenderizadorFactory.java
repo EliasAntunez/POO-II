@@ -1,5 +1,5 @@
-package main.java.reportes.factory;
-import main.java.reportes.renderizador.*;
+package main.factory;
+import main.renderizador.*;
 
 // ===============================================
 // PATRÓN FACTORY METHOD: Crear renderizadores sin acoplar al cliente con clases concretas

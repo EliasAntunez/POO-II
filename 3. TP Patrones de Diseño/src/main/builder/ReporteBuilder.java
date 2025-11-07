@@ -1,7 +1,7 @@
-package main.java.reportes.builder;
+package main.builder;
 
 // Patrón Builder
-// Construir objetos Reporte complejos de forma fluida y legible
+// Construir objetos Reporte cowmplejos de forma fluida y legible
 
 public class ReporteBuilder {
 	// Este archivo puede actuar como fachada si se desea, pero

@@ -1,5 +1,5 @@
-package main.java.reportes.renderizador;
-import main.java.reportes.reporte.Reporte;
+package main.renderizador;
+import main.reporte.Reporte;
 
 /**
  * Interfaz Renderizador - Define el contrato para todos los renderizadores

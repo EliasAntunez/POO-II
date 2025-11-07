@@ -1,6 +1,6 @@
-package main.java.reportes.renderizador;
-import main.java.reportes.reporte.Reporte;
-import main.java.reportes.config.GestorConfiguracion;
+package main.renderizador;
+import main.reporte.Reporte;
+import main.config.GestorConfiguracion;
 
 /**
  * Implementación concreta: Renderizador CSV

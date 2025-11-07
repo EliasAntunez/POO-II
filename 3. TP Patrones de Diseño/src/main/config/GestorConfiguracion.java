@@ -1,4 +1,4 @@
-package main.java.reportes.config;
+package main.config;
 
 // ===============================================
 // PATRÓN SINGLETON: Garantizar una única instancia de configuración global

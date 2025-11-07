@@ -1,12 +1,12 @@
-package main.java.reportes;
+package main;
 import java.time.LocalDate;
-import main.java.reportes.config.GestorConfiguracion;
-import main.java.reportes.factory.RenderizadorFactory;
-import main.java.reportes.factory.TipoReporte;
-import main.java.reportes.renderizador.Renderizador;
-import main.java.reportes.reporte.Orientacion;
-import main.java.reportes.reporte.Reporte;
-import main.java.reportes.reporte.Reporte.ReporteBuilder;
+import main.config.GestorConfiguracion;
+import main.factory.RenderizadorFactory;
+import main.factory.TipoReporte;
+import main.renderizador.Renderizador;
+import main.reporte.Orientacion;
+import main.reporte.Reporte;
+import main.reporte.Reporte.ReporteBuilder;
 
 // ===============================================
 // CLASE PRINCIPAL: Main - Clase principal que demuestra el uso de los tres patrones creacionales
@@ -38,9 +38,9 @@ public class Main {
         System.out.println("Path en config2: " + config2.getPathReportes());
         System.out.println("✓ Unicidad garantizada\n");
         
-        // ============================================
-        // DEMOSTRACIÓN PATRÓN BUILDER
-        // ============================================
+        // // ============================================
+        // // DEMOSTRACIÓN PATRÓN BUILDER
+        // // ============================================
         System.out.println("2️⃣  PATRÓN BUILDER - Construcción de Reportes");
         System.out.println("─────────────────────────────────────────────────");
         
