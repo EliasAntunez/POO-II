@@ -102,6 +102,3 @@ class EnvioFacade {
 }
 
 EnvioFacade o-- IServicioEnvio
-
-note for LogisticaVelozAdapter "Adapter que adapta la API externa (ApiLogisticaVeloz) a la interfaz interna IServicioEnvio. Convierte tipos y delega llamadas."
-note for EnvioFacade "Fachada que centraliza el acceso a distintos proveedores de envío."
