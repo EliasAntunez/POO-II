@@ -38,80 +38,81 @@ Su intención es proporcionar una interfaz unificada para un subsistema complejo
 
 # Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
 
+# Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
+
 ```mermaid
 classDiagram
-    direction LR
+direction LR
 
-    %% === Interfaces y clases principales del sistema ===
-    class IServicioEnvio {
-        <<interface>>
-        + float calcularCosto(String codigoPostal)
-        + String obtenerTiempoEstimado(String codigoPostal)
-        + String despacharPedido(String direccion, String codigoPostal, String idPedido)
-    }
+%% === Interfaces y clases principales del sistema ===
+class IServicioEnvio {
+    <<interface>>
+    + float calcularCosto(String codigoPostal)
+    + String obtenerTiempoEstimado(String codigoPostal)
+    + String despacharPedido(String direccion, String codigoPostal, String idPedido)
+}
 
-    class LogisticaVelozAdapter {
-        - ApiLogisticaVeloz api
-        + LogisticaVelozAdapter()
-        + float calcularCosto(String codigoPostal)
-        + String obtenerTiempoEstimado(String codigoPostal)
-        + String despacharPedido(String direccion, String codigoPostal, String idPedido)
-        - int parseCodigoPostal(String codigoPostal)
-    }
+class LogisticaVelozAdapter {
+    - ApiLogisticaVeloz api
+    + LogisticaVelozAdapter()
+    + float calcularCosto(String codigoPostal)
+    + String obtenerTiempoEstimado(String codigoPostal)
+    + String despacharPedido(String direccion, String codigoPostal, String idPedido)
+    - int parseCodigoPostal(String codigoPostal)
+}
 
-    IServicioEnvio <|.. LogisticaVelozAdapter
-    LogisticaVelozAdapter --> ApiLogisticaVeloz : usa
+IServicioEnvio <|.. LogisticaVelozAdapter
+LogisticaVelozAdapter --> ApiLogisticaVeloz : usa
 
-    %% === Clases externas (SDK) ===
-    class ApiLogisticaVeloz {
-        + Cotizacion cotizarEnvio(int cpDestino)
-        + String enviarPaquete(DatosEnvio datos)
-    }
+%% === Clases externas (SDK) ===
+class ApiLogisticaVeloz {
+    + Cotizacion cotizarEnvio(int cpDestino)
+    + String enviarPaquete(DatosEnvio datos)
+}
 
-    class Cotizacion {
-        - float costo
-        - int dias
-        + Cotizacion(float costo, int dias)
-        + float getCosto()
-        + int getDias()
-    }
+class Cotizacion {
+    - float costo
+    - int dias
+    + Cotizacion(float costo, int dias)
+    + float getCosto()
+    + int getDias()
+}
 
-    class DatosEnvio {
-        - String direccion
-        - int cpDestino
-        - String idPedido
-        + DatosEnvio(String direccion, int cpDestino, String idPedido)
-        + String getDireccion()
-        + int getCpDestino()
-        + String getIdPedido()
-    }
+class DatosEnvio {
+    - String direccion
+    - int cpDestino
+    - String idPedido
+    + DatosEnvio(String direccion, int cpDestino, String idPedido)
+    + String getDireccion()
+    + int getCpDestino()
+    + String getIdPedido()
+}
 
-    ApiLogisticaVeloz --> Cotizacion : retorna
-    ApiLogisticaVeloz --> DatosEnvio : requiere
+ApiLogisticaVeloz --> Cotizacion : retorna
+ApiLogisticaVeloz --> DatosEnvio : requiere
 
-    %% === Fachada para manejar múltiples servicios ===
-    class EnvioFacade {
-        - Map~String, IServicioEnvio~ proveedores
-        - String proveedorPorDefecto
-        + EnvioFacade()
-        + void registrarProveedor(String id, IServicioEnvio servicio, boolean porDefecto)
-        + float calcularCosto(String proveedorId, String codigoPostal)
-        + String obtenerTiempoEstimado(String proveedorId, String codigoPostal)
-        + String despacharPedido(String proveedorId, String direccion, String codigoPostal, String idPedido)
-        - IServicioEnvio elegirProveedor(String proveedorId)
-    }
+%% === Fachada para manejar múltiples servicios ===
+class EnvioFacade {
+    - Map~String, IServicioEnvio~ proveedores
+    - String proveedorPorDefecto
+    + EnvioFacade()
+    + void registrarProveedor(String id, IServicioEnvio servicio, boolean porDefecto)
+    + float calcularCosto(String proveedorId, String codigoPostal)
+    + String obtenerTiempoEstimado(String proveedorId, String codigoPostal)
+    + String despacharPedido(String proveedorId, String direccion, String codigoPostal, String idPedido)
+    - IServicioEnvio elegirProveedor(String proveedorId)
+}
 
-    EnvioFacade o-- IServicioEnvio : "proveedores"
+EnvioFacade o-- IServicioEnvio : proveedores
 
-    %% === Notas descriptivas ===
-    note right of LogisticaVelozAdapter
-      Adapter que adapta la API externa (ApiLogisticaVeloz)
-      a la interfaz interna IServicioEnvio.
-      Convierte tipos y delega llamadas.
-    end note
+%% === Notas descriptivas ===
+note right of LogisticaVelozAdapter
+  Adapter que adapta la API externa (ApiLogisticaVeloz)
+  a la interfaz interna IServicioEnvio.
+  Convierte tipos y delega llamadas.
+end note
 
-    note right of EnvioFacade
-      Fachada que centraliza el acceso
-      a distintos proveedores de envío.
-    end note
-```
+note right of EnvioFacade
+  Fachada que centraliza el acceso
+  a distintos proveedores de envío.
+end note
