@@ -41,7 +41,7 @@ Su intención es proporcionar una interfaz unificada para un subsistema complejo
 # Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
 
 # Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
-
+```mermaid
 classDiagram
 direction LR
 
@@ -102,3 +102,4 @@ class EnvioFacade {
 }
 
 EnvioFacade o-- IServicioEnvio
+```
