@@ -40,11 +40,12 @@ Su intención es proporcionar una interfaz unificada para un subsistema complejo
 
 # Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
 
+# Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
+
 ```mermaid
 classDiagram
 direction LR
 
-%% === Interfaces y clases principales del sistema ===
 class IServicioEnvio {
     <<interface>>
     + float calcularCosto(String codigoPostal)
@@ -64,7 +65,6 @@ class LogisticaVelozAdapter {
 IServicioEnvio <|.. LogisticaVelozAdapter
 LogisticaVelozAdapter --> ApiLogisticaVeloz : usa
 
-%% === Clases externas (SDK) ===
 class ApiLogisticaVeloz {
     + Cotizacion cotizarEnvio(int cpDestino)
     + String enviarPaquete(DatosEnvio datos)
@@ -91,7 +91,6 @@ class DatosEnvio {
 ApiLogisticaVeloz --> Cotizacion : retorna
 ApiLogisticaVeloz --> DatosEnvio : requiere
 
-%% === Fachada para manejar múltiples servicios ===
 class EnvioFacade {
     - Map~String, IServicioEnvio~ proveedores
     - String proveedorPorDefecto
@@ -103,9 +102,9 @@ class EnvioFacade {
     - IServicioEnvio elegirProveedor(String proveedorId)
 }
 
-EnvioFacade o-- IServicioEnvio : proveedores
+EnvioFacade o-- IServicioEnvio
 
-%% === Notas descriptivas ===
+
 note right of LogisticaVelozAdapter
   Adapter que adapta la API externa (ApiLogisticaVeloz)
   a la interfaz interna IServicioEnvio.
