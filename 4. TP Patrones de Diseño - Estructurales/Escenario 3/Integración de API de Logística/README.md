@@ -42,7 +42,6 @@ Su intención es proporcionar una interfaz unificada para un subsistema complejo
 
 # Diagrama de Clases — Integración Logística Veloz (Adapter + Facade)
 
-```mermaid
 classDiagram
 direction LR
 
@@ -104,14 +103,5 @@ class EnvioFacade {
 
 EnvioFacade o-- IServicioEnvio
 
-
-note right of LogisticaVelozAdapter
-  Adapter que adapta la API externa (ApiLogisticaVeloz)
-  a la interfaz interna IServicioEnvio.
-  Convierte tipos y delega llamadas.
-end note
-
-note right of EnvioFacade
-  Fachada que centraliza el acceso
-  a distintos proveedores de envío.
-end note
+note for LogisticaVelozAdapter "Adapter que adapta la API externa (ApiLogisticaVeloz) a la interfaz interna IServicioEnvio. Convierte tipos y delega llamadas."
+note for EnvioFacade "Fachada que centraliza el acceso a distintos proveedores de envío."
